@@ -82,3 +82,77 @@ export const editPasswordDispatch = (CREDS) => ({
     type: ActionTypes.EDIT_PASSWORD,
     payload: CREDS
 })
+
+export const requestLogin = (creds) => {
+  return {
+      type: ActionTypes.LOGIN_REQUEST,
+      creds
+  }
+}
+
+export const receiveLogin = (response) => {
+  return {
+      type: ActionTypes.LOGIN_SUCCESS,
+      token: response.token,
+      userinfo: response.userinfo
+  }
+}
+
+export const loginError = (message) => {
+  return {
+      type: ActionTypes.LOGIN_FAILURE,
+      message
+  }
+}
+
+export const loginUser = (creds) => (dispatch) => {
+
+  dispatch(requestLogin(creds));
+  return fetch(baseUrl + 'users/login', {
+      method: 'POST',
+      headers: { 
+          'Content-Type':'application/json' 
+      },
+      body: JSON.stringify(creds)
+  })
+  .then(response => {
+      if (response.ok) {
+          return response;
+      } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+      }
+      },
+      error => {
+          throw error;
+      })
+  .then(response => response.json())
+  .then(response => {
+      if (response.success) {
+          // If login was successful, set the token in local storage
+          localStorage.setItem('token', response.token);
+          localStorage.setItem('creds', JSON.stringify(creds));
+          localStorage.setItem('userinfo', JSON.stringify(response.userinfo));    
+          dispatch(fetchIssues(!response.userinfo.admin));      
+          if(response.userinfo.admin) {
+            dispatch(fetchUsers())
+          }
+          setTimeout(()=>{
+            logoutUser();
+            alert('Your JWT token has expired. \nPlease log in again to continue.');
+           },3600*1000);
+          // Dispatch the success action
+          dispatch(receiveLogin(response));
+      
+      }
+      else {
+          var error = new Error('Error ' + response.status);
+          error.response = response;
+          throw error;
+      }
+  })
+  .catch(error => {
+    alert(error.message+'\n'+"Username and password didn't match");
+     return dispatch(loginError(error.message));})
+};
