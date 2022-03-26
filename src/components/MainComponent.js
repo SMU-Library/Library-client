@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import Header from './HeaderComponent.js';
-import Home from './HomeComponent.js';
-import Booklist from './BooksComponent.js';
-import Profile from './ProfileComponent.js';
-import AddBook from './AddBookComponent.js';
+import Header from './HeaderComponent';
+import Home from './HomeComponent';
+import Booklist from './BooksComponent';
+import Profile from './ProfileComponent';
+import AddBook from './AddBookComponent';
 
 import {Switch,Route,Redirect, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
