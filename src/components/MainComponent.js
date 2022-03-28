@@ -5,7 +5,7 @@ import Booklist from './BooksComponent';
 import Profile from './ProfileComponent';
 import AddBook from './AddBookComponent';
 
-import {Switch,Route,Redirect, withRouter} from 'react-router-dom';
+import {Route,Routes,Navigate, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {Modal,ModalBody,ModalHeader,Button, Label, Col, Row} from 'reactstrap';
 import { postBook, fetchBooks, editBook, deleteBook,loginUser, logoutUser, 
@@ -123,7 +123,7 @@ class Main extends Component {
         <Route {...rest} render={(props) => (
           this.props.auth.isAuthenticated
             ? <Component {...props} />
-            : <Redirect to={{
+            : <Navigate to={{
                 pathname: '/home',
                 state: { from: props.location }
               }} />
@@ -134,7 +134,7 @@ class Main extends Component {
         <Route {...rest} render={(props) => (
           this.props.auth.isAuthenticated&&this.props.auth.userinfo.admin
             ? <Component {...props} />
-            : <Redirect to={{
+            : <Navigate to={{
                 pathname: '/home',
                 state: { from: props.location }
               }} />
@@ -145,7 +145,7 @@ class Main extends Component {
         <Route {...rest} render={(props) => (
           this.props.auth.isAuthenticated&&!this.props.auth.userinfo.admin
             ? <Component {...props} />
-            : <Redirect to={{
+            : <Navigate to={{
                 pathname: '/home',
                 state: { from: props.location }
               }} />
@@ -162,7 +162,7 @@ class Main extends Component {
           logoutUser={this.props.logoutUser}
           registerUser={this.props.registerUser}
           />
-          <Switch location={this.props.location}>
+          <Routes location={this.props.location}>
                       <Route exact path='/home' component={() => <Home />} />
                       <Route exact path='/search' component={() => <Search 
                       books={this.props.books.books}
@@ -251,8 +251,8 @@ class Main extends Component {
                       usersLoading={this.props.users.isLoading}
                       usersErrMess={this.props.users.errMess}
                      />}/>
-                      <Redirect to="/home"/>
-          </Switch>
+                      <Navigate to="/home"/>
+          </Routes>
         <Footer/>
         <Modal isOpen={this.state.isDeleteModalOpen} toggle={this.toggleDeleteModal}>
                      <ModalHeader toggle={this.toggleDeleteModal}>

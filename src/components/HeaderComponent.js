@@ -62,3 +62,6 @@ class Header extends Component{
                 </Navbar>
             </React.Fragment>
         )}}
+
+
+export default Header;
