@@ -3,47 +3,49 @@ import {Card,CardBody,CardHeader,Label,CardText,Button,Modal,ModalBody,ModalHead
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
 const required = (val) => val && val.length;
-const maxLength = (Len) => (val) => !(val) || (val.length <= len);
-const minLength = (Len) => (val) => (val)  && (val.length >= len);
+const maxLength = (len) => (val) => !(val) || (val.length <= len);
+const minLength = (len) => (val) => (val) && (val.length >= len);
 const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 const matchcreds = (original) => (val) =>  (val===original);
+
 class Profile extends Component {
 
     constructor(props){
         super(props);
-        this.state = {
+        this.state={
             isEditModalOpen: false,
-            isPasswordMdalOpen: false
+            isPasswordModalOpen: false
         }
-        this.toggleEditModal = this.toggleEditModal.bind(this);
-        this.togglePasswordModal = this.togglePasswordModal.bind(this);
+        this.toggleEditModal=this.toggleEditModal.bind(this);
+        this.togglePasswordModal=this.togglePasswordModal.bind(this);
     }
 
     componentDidMount() {
-        window.scrollTo(0,0)
-    }
+        window.scrollTo(0, 0)
+      }
 
-    togglePasswordModal() {
+    togglePasswordModal(){
         this.setState({
-            isPasswordMdalOpen:!this.state.isPasswordMdalOpen
+            isPasswordModalOpen: !this.state.isPasswordModalOpen
         });
     }
 
     toggleEditModal(){
-        this.setState({isEditModalOpen: !this.state.isEditModalOpen});
+            this.setState({isEditModalOpen: !this.state.isEditModalOpen});
+          }
+      
+
+render(){
+    if(this.props.auth.userinfo===null){
+        return (
+            <div className="row heading">
+                Failed to fetch. Please reload the page
+            </div>
+        )
     }
-    
-    render(){
-        if(this.props.auth.userinfo===null){
-            return (
-                <div className="row heading">
-                    Failed to fetch. Please reload the page
-                </div>
-            )
-        }
-        
-        return(
-            <div className="container mt-6 home text-center align-self-center">
+    return(
+
+        <div className="container mt-6 home text-center align-self-center">
             <div className="row text-center justify-content-center">
             
             <Card className="heading">
@@ -62,9 +64,9 @@ class Profile extends Component {
 {this.props.auth.userinfo.admin?<div/>:        <Button color="info" onClick={this.togglePasswordModal}>Change Password &nbsp;{'   '}<span className="fa fa-key"/></Button>}
 
         </CardBody>
-        </Card>
-        </div>
-        <Modal isOpen={this.state.isEditModalOpen} toggle={this.toggleEditModal}>
+          </Card>
+            </div>
+            <Modal isOpen={this.state.isEditModalOpen} toggle={this.toggleEditModal}>
                      <ModalHeader toggle={this.toggleEditModal}>
                          Edit Profile
                      </ModalHeader>
@@ -163,10 +165,10 @@ class Profile extends Component {
                         </LocalForm>
                      </ModalBody>               
           </Modal>
-          </div>
+            </div>
         );
-
-    }
 }
 
-export default Profile
+}
+
+export default Profile;
