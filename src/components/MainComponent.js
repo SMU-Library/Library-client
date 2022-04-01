@@ -2,8 +2,18 @@ import React, {Component} from 'react';
 import Header from './HeaderComponent';
 import Home from './HomeComponent';
 import Booklist from './BooksComponent';
+import Footer from './FooterComponent';
 import Profile from './ProfileComponent';
 import AddBook from './AddBookComponent';
+import BookDetail from './BookDetailComponent';
+import UserDetail from './UserDetailComponent';
+import Search from './SearchComponent';
+import History from './HistoryComponent';
+import Log from './LogComponent';
+import UserList from './UserListComponent';
+import Issue from './IssueComponent';
+import Return from './ReturnComponent';
+import Stats from './StatsComponent';
 
 import {Route,Routes,Navigate, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
@@ -452,5 +462,5 @@ class Main extends Component {
     }
     }
 
-    export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Main));
+    export default Route(connect(mapStateToProps,mapDispatchToProps)(Main));
 
