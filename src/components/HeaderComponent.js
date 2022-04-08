@@ -81,18 +81,16 @@ class Header extends Component{
     render(){
         return (
             <React.Fragment>
-                 <Navbar color="dark" dark expand="xl" fixed="top">
+                 <Navbar color="white" dark expand="xl" fixed="top">
                     <div className="container">
                      <NavbarToggler onClick={this.toggleNav}></NavbarToggler>
                      <NavbarBrand className="mr-auto text-primary" href="/home">
-                     Central Library
+                     SMU Library
                      </NavbarBrand>
                      <Collapse isOpen={this.state.isNavOpen} navbar>
                      <Nav navbar>
                         <NavItem className="ml-2" onClick={this.toggleNav}>
-                            <NavLink className="nav-link text-primary" to="/home">
-                               <span className="fa fa-home fa-lg"/> Home
-                           </NavLink>
+                           
                         </NavItem>
                         {this.props.auth.userinfo&&this.props.auth.userinfo.admin?(
                             <NavItem className="">
