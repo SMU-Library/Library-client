@@ -61,7 +61,7 @@ render(){
             
             <br/> <p className="ml-auto"> Authors : {`    ${book.author}`}</p>
              <p> {book.copies} Copies available</p>
-             <p>Location : {` Floor- ${book.floor}, Shelf- ${book.shelf}`}</p>
+             <p>Location : {`Shelf- ${book.shelf}`}</p>
             </ListGroupItem>        );
             else return (<React.Fragment/>);
     });

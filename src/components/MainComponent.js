@@ -43,8 +43,8 @@ const mapDispatchToProps = dispatch => ({
   fetchBooks: () => { dispatch(fetchBooks())},
   fetchIssues: (student) =>{ dispatch(fetchIssues(student))},
   fetchUsers: () => { dispatch(fetchUsers())},
-  postBook: (name, author, description, isbn, cat, floor, shelf, copies) => dispatch(postBook(name, author, description, isbn, cat, floor, shelf, copies)),
-  editBook: (_id, name, author, description, isbn, cat, floor, shelf, copies) => dispatch(editBook(_id, name, author, description, isbn, cat, floor, shelf, copies)),
+  postBook: (name, author, description, isbn, cat, shelf, copies) => dispatch(postBook(name, author, description, isbn, cat, shelf, copies)),
+  editBook: (_id, name, author, description, isbn, cat, shelf, copies) => dispatch(editBook(_id, name, author, description, isbn, cat, shelf, copies)),
   deleteBook: (_id) =>  dispatch(deleteBook(_id)),
   loginUser: (creds) => dispatch(loginUser(creds)),
   logoutUser: () => dispatch(logoutUser()),
@@ -82,7 +82,7 @@ class Main extends Component {
       handleSubmitEdit(values) {
         this.toggleEditModal();
         this.props.editBook(this.state.selectedBook._id, values.name, values.author,
-          values.description, values.isbn, values.cat, values.floor, values.shelf, values.copies);     
+          values.description, values.isbn, values.cat, values.shelf, values.copies);     
         }
     
     changeSelected(_id){
@@ -399,18 +399,18 @@ class Main extends Component {
                                 </Col>
                             </Row>
 
-                        <Row className="form-group">
-                            <Col>
-                            <Label htmlFor="floor">Floor </Label>
-                            <Control.select model=".floor" id="floor" className="form-control" defaultValue={this.state.selectedBook.floor}>
-                              <option>0</option> <option>1</option>
-                              <option>2</option> <option>3</option>
-                              <option>4</option> <option>5</option>
-                              <option>6</option> <option>7</option>
-                              <option>8</option> 
-                            </Control.select>
-                            </Col>
-                        </Row>
+                        {/* <Row className="form-group"> */}
+                        {/*     <Col> */}
+                        {/*     <Label htmlFor="floor">Floor </Label> */}
+                        {/*     <Control.select model=".floor" id="floor" className="form-control" defaultValue={this.state.selectedBook.floor}> */}
+                        {/*       <option>0</option> <option>1</option> */}
+                        {/*       <option>2</option> <option>3</option> */}
+                        {/*       <option>4</option> <option>5</option> */}
+                        {/*       <option>6</option> <option>7</option> */}
+                        {/*       <option>8</option>  */}
+                        {/*     </Control.select> */}
+                        {/*     </Col> */}
+                        {/* </Row> */}
                         
                         <Row className="form-group">
                                 <Label htmlFor="shelf" md={6}> Shelf</Label>

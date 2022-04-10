@@ -59,7 +59,7 @@ render(){
     </div>
     <div className="row row-content justify-content-center">
     <LocalForm onSubmit={(values) => {
-        this.props.postBook(values.name, values.author, values.description, values.isbn, values.cat, values.floor, values.shelf, values.copies);
+        this.props.postBook(values.name, values.author, values.description, values.isbn, values.cat, values.shelf, values.copies);
     }}>
                     <Row className="form-group">
                                 <Label htmlFor="name" md={2}>Name </Label>
@@ -164,17 +164,17 @@ render(){
 
                             </Control.select>
                             </Col>
-                            <Col>
-                            <Label htmlFor="floor">Floor </Label>
-                            <Control.select defaultValue={0} model=".floor" id="floor" 
-                            className="form-control" >
-                              <option>0</option> <option>1</option>
-                              <option>2</option> <option>3</option>
-                              <option>4</option> <option>5</option>
-                              <option>6</option> <option>7</option>
-                              <option>8</option> 
-                            </Control.select>
-                            </Col>
+                            {/* <Col> */}
+                            {/* <Label htmlFor="floor">Floor </Label> */}
+                            {/* <Control.select defaultValue={0} model=".floor" id="floor"  */}
+                            {/* className="form-control" > */}
+                            {/*   <option>0</option> <option>1</option> */}
+                            {/*   <option>2</option> <option>3</option> */}
+                            {/*   <option>4</option> <option>5</option> */}
+                            {/*   <option>6</option> <option>7</option> */}
+                            {/*   <option>8</option>  */}
+                            {/* </Control.select> */}
+                            {/* </Col> */}
                         </Row>
                         
                         <Row className="form-group text-center justify-content-center">
