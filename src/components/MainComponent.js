@@ -11,7 +11,7 @@ import History from './HistoryComponent.js';
 import Issue from './IssueComponent.js';
 import Return from './ReturnComponent.js';
 import UserDetail from './UserDetailComponent.js';
-import Stats from './StatsComponent.js';
+// import Stats from './StatsComponent.js';
 import Log from './LogComponent.js';
 import UserList from './UserListComponent.js';
 
@@ -251,16 +251,16 @@ class Main extends Component {
                       auth={this.props.auth}
                       returnIssue={this.props.returnIssue}
                      />} />
-                      <PrivateRouteAdmin path='/users/:userId' component={UserWithId}/>
-                      <PrivateRouteAdmin path='/stats' component={() => <Stats
-                      issues={this.props.issues}
-                      books={this.props.books.books}
-                      booksLoading={this.props.books.isLoading}
-                      booksErrMess={this.props.books.errMess}
-                      users={this.props.users.users}
-                      usersLoading={this.props.users.isLoading}
-                      usersErrMess={this.props.users.errMess}
-                     />}/>
+                     {/*  <PrivateRouteAdmin path='/users/:userId' component={UserWithId}/> */}
+                     {/*  <PrivateRouteAdmin path='/stats' component={() => <Stats */}
+                     {/*  issues={this.props.issues} */}
+                     {/*  books={this.props.books.books} */}
+                     {/*  booksLoading={this.props.books.isLoading} */}
+                     {/*  booksErrMess={this.props.books.errMess} */}
+                     {/*  users={this.props.users.users} */}
+                     {/*  usersLoading={this.props.users.isLoading} */}
+                     {/*  usersErrMess={this.props.users.errMess} */}
+                     {/* />}/> */}
                       <Redirect to="/home"/>
           </Switch>
         <Footer/>
