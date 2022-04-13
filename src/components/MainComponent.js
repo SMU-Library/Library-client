@@ -49,7 +49,7 @@ const mapDispatchToProps = dispatch => ({
   loginUser: (creds) => dispatch(loginUser(creds)),
   logoutUser: () => dispatch(logoutUser()),
   registerUser: (creds) => dispatch(registerUser(creds)),
-  editUser: (_id, firstname, lastname, roll, email) => dispatch(editUser(_id, firstname, lastname, roll, email)),
+  editUser: (_id, firstname, lastname, studentId, email) => dispatch(editUser(_id, firstname, lastname, studentId, email)),
   editPassword : (_id,username,password) => dispatch(editPassword(_id,username,password)),
   postIssue: (bookId,studentId) => (dispatch(postIssue(bookId,studentId))),
   returnIssue: (issueId) => (dispatch(returnIssue(issueId)))

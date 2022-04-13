@@ -227,7 +227,7 @@ class Header extends Component{
                               username: values.username,
                                password: values.password,
                                email: values.email,
-                               roll: values.roll,
+                               studentID: values.studentID,
                                firstname: values.firstname,
                                lastname: values.lastname });
                               }}>
@@ -260,10 +260,10 @@ class Header extends Component{
                             minLength: ' Must be greater than 2 characters', maxLength:' Must be 20 characters or less'}}/>
                             </FormGroup>
                             <FormGroup>    
-                                 <Label htmlFor="roll">Roll No.</Label>
-                                <Control.text model=".roll" id="roll" name="roll" 
-                            className="form-control" placeholder="roll" validators={{required,minLength: minLength(3),maxLength:maxLength(12)}} />
-                            <Errors className="text-danger" model=".roll" show="touched" messages={{required: 'Required',
+                                 <Label htmlFor="studentID">Student ID</Label>
+                                <Control.text model=".studentID" id="studentID" name="studentID" 
+                            className="form-control" placeholder="Student ID" validators={{required,minLength: minLength(3),maxLength:maxLength(12)}} />
+                            <Errors className="text-danger" model=".studentID" show="touched" messages={{required: 'Required',
                             minLength: ' Must be greater than 2 characters', maxLength:' Must be 12 characters or less'}}/>
                             </FormGroup>
                             <FormGroup>    

@@ -55,7 +55,7 @@ render(){
           <CardText>
           <h5> First Name : {'          '+this.props.auth.userinfo.firstname}</h5>
           <h5> Last Name : {'          '+this.props.auth.userinfo.lastname}</h5>
-          <h5> {(this.props.auth.userinfo.admin)?'Admin Id : ':'Roll No.'} : {'          '+this.props.auth.userinfo.roll}</h5>
+          <h5> {(this.props.auth.userinfo.admin)?'Admin Id : ':'Student ID'} : {'          '+this.props.auth.userinfo.studentID}</h5>
           <h5> Email : {'          '+this.props.auth.userinfo.email}</h5>
           </CardText>
           
@@ -74,7 +74,7 @@ render(){
                      <LocalForm model="user" onSubmit={(values) => {
                                this.toggleEditModal();
                                this.props.editUser(this.props.auth.userinfo._id, values.firstname, 
-                                values.lastname, values.roll, values.email);     
+                                values.lastname, values.studentID, values.email);     
                                  }}>
                             <FormGroup>
                                 <Label htmlFor="firstname">First Name</Label>
@@ -94,11 +94,11 @@ render(){
                             minLength: ' Must be greater than 2 characters', maxLength:' Must be 20 characters or less'}}/>
                             </FormGroup>
                             <FormGroup>    
-                                 <Label htmlFor="roll">Roll No.</Label>
-                                <Control.text model=".roll" id="roll" name="roll" 
-                            className="form-control"  defaultValue={this.props.auth.userinfo.roll}
-                            placeholder="roll" validators={{required,minLength: minLength(3),maxLength:maxLength(12)}} />
-                            <Errors className="text-danger" model=".roll" show="touched" messages={{required: 'Required',
+                                 <Label htmlFor="studentID">Student ID</Label>
+                                <Control.text model=".studentID" id="studentID" name="studentID" 
+                            className="form-control"  defaultValue={this.props.auth.userinfo.studentID}
+                            placeholder="Student ID" validators={{required,minLength: minLength(3),maxLength:maxLength(12)}} />
+                            <Errors className="text-danger" model=".studentID" show="touched" messages={{required: 'Required',
                             minLength: ' Must be greater than 2 characters', maxLength:' Must be 12 characters or less'}}/>
                             </FormGroup>
                             <FormGroup>    

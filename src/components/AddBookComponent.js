@@ -59,7 +59,7 @@ render(){
     </div>
     <div className="row row-content justify-content-center">
     <LocalForm onSubmit={(values) => {
-        this.props.postBook(values.name, values.author, values.description, values.isbn, values.cat, values.shelf, values.copies);
+        this.props.postBook(values.name, values.author, values.description, values.isbn, values.cat, /* values.shelf, */ values.copies);
     }}>
                     <Row className="form-group">
                                 <Label htmlFor="name" md={2}>Name </Label>
@@ -153,7 +153,7 @@ render(){
                         <Row className="form-group">
                             <Col>
                             <Label htmlFor="cat">Category</Label>
-                            <Control.select defaultValue="Romance" model=".cat" id="cat" className="form-control">
+                            <Control.select defaultValue="Technology" model=".cat" id="cat" className="form-control">
                               <option>Romance</option> <option>Technology</option>
                               <option>Computer Science</option> <option>Management</option>
                               <option>Electronics</option> <option>Physics</option>
@@ -177,29 +177,29 @@ render(){
                             {/* </Col> */}
                         </Row>
                         
-                        <Row className="form-group text-center justify-content-center">
-                                <Label htmlFor="shelf" md={3}> Shelf</Label>
-                                <Col md={6}>
-                                    <Control.text model=".shelf" id="shelf" name="shelf"
-                                        placeholder="Shelf no. for locating book"
-                                        className="form-control"
-                                        validators={{
-                                            requiredNum, minVal: minVal(1), maxVal: maxVal(100), isNumber
-                                        }}
-                                         />
-                                    <Errors
-                                        className="text-danger"
-                                        model=".shelf"
-                                        show="touched"
-                                        messages={{
-                                            requiredNum: 'Required',
-                                            minVal: ' Must be greater than 0',
-                                            maxVal: ' Must be 100 or less',
-                                            isNumber: ' Must be a number'
-                                        }}
-                                     />
-                                </Col>
-                            </Row>
+                        {/* <Row className="form-group text-center justify-content-center"> */}
+                        {/*         <Label htmlFor="shelf" md={3}> Shelf</Label> */}
+                        {/*         <Col md={6}> */}
+                        {/*             <Control.text model=".shelf" id="shelf" name="shelf" */}
+                        {/*                 placeholder="Shelf no. for locating book" */}
+                        {/*                 className="form-control" */}
+                        {/*                 validators={{ */}
+                        {/*                     requiredNum, minVal: minVal(1), maxVal: maxVal(100), isNumber */}
+                        {/*                 }} */}
+                        {/*                  /> */}
+                        {/*             <Errors */}
+                        {/*                 className="text-danger" */}
+                        {/*                 model=".shelf" */}
+                        {/*                 show="touched" */}
+                        {/*                 messages={{ */}
+                        {/*                     requiredNum: 'Required', */}
+                        {/*                     minVal: ' Must be greater than 0', */}
+                        {/*                     maxVal: ' Must be 100 or less', */}
+                        {/*                     isNumber: ' Must be a number' */}
+                        {/*                 }} */}
+                        {/*              /> */}
+                        {/*         </Col> */}
+                        {/*     </Row> */}
 
                      
                         <Row className="form-group">

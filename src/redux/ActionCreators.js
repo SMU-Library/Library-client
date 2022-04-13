@@ -6,12 +6,12 @@ export const addBook = (book) => ({
   payload: book
 });
 
-export const postBook = (name, author, description, isbn, cat, shelf, copies) => (dispatch) => {
+export const postBook = (name, author, description, isbn, cat, /* shelf, */ copies) => (dispatch) => {
     const newBook = {
       name: name, author: author,
        description: description, isbn: isbn,
         cat: cat,  
-        shelf: shelf, copies: copies
+        /* shelf: shelf, */ copies: copies
     };
     const bearer = 'Bearer ' + localStorage.getItem('token');
     return fetch(baseUrl + 'books', {
@@ -41,13 +41,13 @@ export const postBook = (name, author, description, isbn, cat, shelf, copies) =>
     .catch(error =>  { alert('Your book could not be added\nError: '+error.message); });
 };
 
-export const editBook = (_id, name, author, description, isbn, cat,  shelf, copies) => (dispatch) => {
+export const editBook = (_id, name, author, description, isbn, cat,  /* shelf, */ copies) => (dispatch) => {
 
   const newBook = {
     name: name, author: author,
      description: description, isbn: isbn,
       cat: cat,  
-      shelf: shelf, copies: copies
+      /* shelf: shelf, */ copies: copies
   };
   const bearer = 'Bearer ' + localStorage.getItem('token');
   return fetch(baseUrl + 'books/' + _id, {
@@ -109,12 +109,12 @@ export const editPassword = (_id,username,password) => (dispatch) => {
 alert('Your password could not be changed\nError: '+error.message); });
 }
 
-export const editUser = (_id, firstname, lastname, roll, email) => (dispatch) => {
+export const editUser = (_id, firstname, lastname, studentId, email) => (dispatch) => {
 
   const newUser = {
 firstname: firstname,
 lastname: lastname,
-roll: roll,
+studentId: studentId,
 email: email  };
   const bearer = 'Bearer ' + localStorage.getItem('token');
   return fetch(baseUrl + 'users/' + _id, {
@@ -143,7 +143,7 @@ email: email  };
     localStorage.setItem('userinfo', JSON.stringify(response));
     return dispatch(editUserdispatch(response));})
   .catch(error =>  {  
-  alert('Your profile could not be edited\nError: '+error.message+'\n May be someone has already registered with that Roll No. or Email'); });
+  alert('Your profile could not be edited\nError: '+error.message+'\n May be someone has already registered with that Student Id or Email'); });
 };
 
 export const deleteBook = (_id) => (dispatch) => {
@@ -379,7 +379,7 @@ export const registerUser = (creds) => (dispatch) => {
       }
   })
   .catch(error => alert(error.message+'\n'+
-      'May be someone has already registered with that username, email or Roll No.\nTry Entering a new username,email or Roll No. '))
+      'May be someone has already registered with that username, email or Student ID\nTry Entering a new username,email or Student ID '))
 };
 
 export const addIssue = (issue) => ({
