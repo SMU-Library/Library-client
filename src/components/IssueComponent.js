@@ -74,8 +74,8 @@ render(){
     <div className="row row-content justify-content-center">
     <Form onSubmit={(e) => {
         let bookid=this.props.books.filter((book)=>(book.isbn===this.state.isbn))[0]._id
-        let studentid=this.props.users.filter((user)=>(user.studentID===this.state.studentID))[0]._id;
-        this.props.postIssue(bookid,studentid);
+        let studentId=this.props.users.filter((user)=>(user.studentID===this.state.studentID))[0]._id;
+        this.props.postIssue(bookid,studentId);
         e.preventDefault();
     }}>
 
