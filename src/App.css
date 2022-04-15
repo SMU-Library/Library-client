@@ -21,6 +21,7 @@ body {
 
 
 .home {
+  background-color: #c8c8c8;
   background-image: url('./images/walllpaper.jpg');
   min-height: 100vh;
   min-width: 99vw;
@@ -64,5 +65,9 @@ table {
 }
 
 .navbar-toggler {
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background-color: #5081ff66;
   border: 1px solid rgb(0, 0, 0);
 }
