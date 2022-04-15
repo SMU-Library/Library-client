@@ -1,5 +1,9 @@
 import React,{Component} from 'react';
 import Search from './SearchComponent.js';
+import { Form,FormGroup,Row,Col,Label, Input, Badge, ListGroupItem, ListGroup } from 'reactstrap';
+import Loading from './LoadingComponent.js';
+import {Link} from 'react-router-dom';
+
 
 class Home extends Component {
 
@@ -14,6 +18,7 @@ class Home extends Component {
       }
 
 render(){
+    
     return(
         <div className="container mt-4 home text-center align-self-center">
         <br/><br/><br/>
@@ -21,9 +26,11 @@ render(){
             <h1 align="center"> Welcome to SMU Library</h1>
             </div>
             <div className="row darkbg">
-
             </div>
             <div className="row darkbg justify-content-center">
+
+
+           
 
                 
 
@@ -39,5 +46,6 @@ render(){
 }
 
 }
+
 
 export default Home;
