@@ -6,12 +6,12 @@ export const addBook = (book) => ({
   payload: book
 });
 
-export const postBook = (name, author, description, isbn, cat, /* shelf, */ copies) => (dispatch) => {
+export const postBook = (name, author, description, isbn, cat,  shelf,  copies) => (dispatch) => {
     const newBook = {
       name: name, author: author,
        description: description, isbn: isbn,
         cat: cat,  
-        /* shelf: shelf, */ copies: copies
+         shelf: shelf,  copies: copies
     };
     const bearer = 'Bearer ' + localStorage.getItem('token');
     return fetch(baseUrl + 'books', {
@@ -41,7 +41,7 @@ export const postBook = (name, author, description, isbn, cat, /* shelf, */ copi
     .catch(error =>  { alert('Your book could not be added\nError: '+error.message); });
 };
 
-export const editBook = (_id, name, author, description, isbn, cat,  /* shelf, */ copies) => (dispatch) => {
+export const editBook = (_id, name, author, description, isbn, cat, shelf,  copies) => (dispatch) => {
 
   const newBook = {
     name: name, author: author,
