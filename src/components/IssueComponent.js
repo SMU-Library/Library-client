@@ -9,16 +9,21 @@ class Issue extends Component {
         super(props);
         this.state={
         isbn: '',
-        studentID: ''
+        studentID: '',
+        usersList: []
         }
     }
 
     componentDidMount() {
         window.scrollTo(0, 0)
+        this.setState({usersList: this.props.users.filter((user)=>(!user.admin))})
       }
 
+
 render(){
-    if (this.props.booksLoading||this.props.usersLoading) {
+    if (this.state.usersList.length === 0) {
+        return(<div style={{marginTop: 70}}> no users are registered </div>)
+    } else if (this.props.booksLoading||this.props.usersLoading) {
         return(
             <div className="container">
                 <div className="row">            
@@ -56,13 +61,13 @@ render(){
     const bookoptions= this.props.books.map((book,index)=>(<option 
     key={book.isbn}>{book.isbn}</option>));
     const defaultBook=this.props.books[0];
-    // To just get list of the students (not the admins)
-    let useroptions=this.props.users.filter((user)=>(!user.admin));
-    const defaultUser=useroptions[0];
-    useroptions= useroptions.map((user,index)=>(<option 
-    key={user.studentID}>{user.studentID}</option>))
+    
+    this.state.usersList.map((user,index)=>(
+    <option key={user.studentID}>
+        {user.studentID}
+    </option>))
     if(this.state.isbn==='') {
-        this.setState({isbn: defaultBook.isbn,studentID: defaultUser.studentID  });
+        this.setState({isbn: defaultBook.isbn,studentID: this.state.usersList[0].studentID  });
     }
     return (
     <div className="container full">
@@ -89,7 +94,7 @@ render(){
           <Label htmlFor="studentID"> Student ID </Label>
             <Input type="select" id="studentID" 
                    className="form-control" onInput={(e)=>{this.setState({studentID: e.target.value})}}>
-                   {useroptions}
+                   {this.state.usersList}
             </Input>
         </FormGroup>
         <FormGroup row>
@@ -113,7 +118,7 @@ render(){
           <Label htmlFor="name_student"> Name of student </Label>
             <Input type="text" id="name_student" name="name_student"
                    placeholder="Name of student" 
-                   defaultValue={defaultUser.firstname+' '+defaultUser.lastname}
+                   defaultValue={this.state.usersList[0]?.firstname+' '+this.state.usersList[0]?.lastname}
                    value={!this.state.studentID?''
                    :this.props.users.filter((user)=>(user.studentID===this.state.studentID))[0].firstname+' '+
                    this.props.users.filter((user)=>(user.studentID===this.state.studentID))[0].lastname}
@@ -123,7 +128,7 @@ render(){
           <Label htmlFor="username"> Username of student </Label>
             <Input type="text" id="username" name="username"
                    placeholder="Username of student" 
-                   defaultValue={defaultUser.username}
+                   defaultValue={this.state.usersList[0]?.username}
                    value={!this.state.studentID?''
                    :this.props.users.filter((user)=>(user.studentID===this.state.studentID))[0].username}
                     className="form-control" disabled/>

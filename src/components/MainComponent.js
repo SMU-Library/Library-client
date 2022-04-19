@@ -11,7 +11,7 @@ import History from './HistoryComponent.js';
 import Issue from './IssueComponent.js';
 import Return from './ReturnComponent.js';
 import UserDetail from './UserDetailComponent.js';
-// import Stats from './StatsComponent.js';
+import Stats from './StatsComponent.js';
 import Log from './LogComponent.js';
 import UserList from './UserListComponent.js';
 
@@ -43,13 +43,13 @@ const mapDispatchToProps = dispatch => ({
   fetchBooks: () => { dispatch(fetchBooks())},
   fetchIssues: (student) =>{ dispatch(fetchIssues(student))},
   fetchUsers: () => { dispatch(fetchUsers())},
-  postBook: (name, author, description, isbn, cat, shelf, copies) => dispatch(postBook(name, author, description, isbn, cat, shelf, copies)),
-  editBook: (_id, name, author, description, isbn, cat, shelf, copies) => dispatch(editBook(_id, name, author, description, isbn, cat, shelf, copies)),
+  postBook: (name, author, description, isbn, cat, floor, shelf, copies) => dispatch(postBook(name, author, description, isbn, cat, floor, shelf, copies)),
+  editBook: (_id, name, author, description, isbn, cat, floor, shelf, copies) => dispatch(editBook(_id, name, author, description, isbn, cat, floor, shelf, copies)),
   deleteBook: (_id) =>  dispatch(deleteBook(_id)),
   loginUser: (creds) => dispatch(loginUser(creds)),
   logoutUser: () => dispatch(logoutUser()),
   registerUser: (creds) => dispatch(registerUser(creds)),
-  editUser: (_id, firstname, lastname, studentId, email) => dispatch(editUser(_id, firstname, lastname, studentId, email)),
+  editUser: (_id, firstname, lastname, roll, email) => dispatch(editUser(_id, firstname, lastname, roll, email)),
   editPassword : (_id,username,password) => dispatch(editPassword(_id,username,password)),
   postIssue: (bookId,studentId) => (dispatch(postIssue(bookId,studentId))),
   returnIssue: (issueId) => (dispatch(returnIssue(issueId)))
@@ -82,7 +82,7 @@ class Main extends Component {
       handleSubmitEdit(values) {
         this.toggleEditModal();
         this.props.editBook(this.state.selectedBook._id, values.name, values.author,
-          values.description, values.isbn, values.cat, values.shelf, values.copies);     
+          values.description, values.isbn, values.cat, values.floor, values.shelf, values.copies);     
         }
     
     changeSelected(_id){
@@ -251,16 +251,16 @@ class Main extends Component {
                       auth={this.props.auth}
                       returnIssue={this.props.returnIssue}
                      />} />
-                     {/*  <PrivateRouteAdmin path='/users/:userId' component={UserWithId}/> */}
-                     {/*  <PrivateRouteAdmin path='/stats' component={() => <Stats */}
-                     {/*  issues={this.props.issues} */}
-                     {/*  books={this.props.books.books} */}
-                     {/*  booksLoading={this.props.books.isLoading} */}
-                     {/*  booksErrMess={this.props.books.errMess} */}
-                     {/*  users={this.props.users.users} */}
-                     {/*  usersLoading={this.props.users.isLoading} */}
-                     {/*  usersErrMess={this.props.users.errMess} */}
-                     {/* />}/> */}
+                      <PrivateRouteAdmin path='/users/:userId' component={UserWithId}/>
+                      <PrivateRouteAdmin path='/stats' component={() => <Stats
+                      issues={this.props.issues}
+                      books={this.props.books.books}
+                      booksLoading={this.props.books.isLoading}
+                      booksErrMess={this.props.books.errMess}
+                      users={this.props.users.users}
+                      usersLoading={this.props.users.isLoading}
+                      usersErrMess={this.props.users.errMess}
+                     />}/>
                       <Redirect to="/home"/>
           </Switch>
         <Footer/>
@@ -399,18 +399,18 @@ class Main extends Component {
                                 </Col>
                             </Row>
 
-                        {/* <Row className="form-group"> */}
-                        {/*     <Col> */}
-                        {/*     <Label htmlFor="floor">Floor </Label> */}
-                        {/*     <Control.select model=".floor" id="floor" className="form-control" defaultValue={this.state.selectedBook.floor}> */}
-                        {/*       <option>0</option> <option>1</option> */}
-                        {/*       <option>2</option> <option>3</option> */}
-                        {/*       <option>4</option> <option>5</option> */}
-                        {/*       <option>6</option> <option>7</option> */}
-                        {/*       <option>8</option>  */}
-                        {/*     </Control.select> */}
-                        {/*     </Col> */}
-                        {/* </Row> */}
+                        <Row className="form-group">
+                            <Col>
+                            <Label htmlFor="floor">Floor </Label>
+                            <Control.select model=".floor" id="floor" className="form-control" defaultValue={this.state.selectedBook.floor}>
+                              <option>0</option> <option>1</option>
+                              <option>2</option> <option>3</option>
+                              <option>4</option> <option>5</option>
+                              <option>6</option> <option>7</option>
+                              <option>8</option> 
+                            </Control.select>
+                            </Col>
+                        </Row>
                         
                         <Row className="form-group">
                                 <Label htmlFor="shelf" md={6}> Shelf</Label>
