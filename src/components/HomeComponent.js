@@ -1,9 +1,4 @@
 import React,{Component} from 'react';
-import Search from './SearchComponent.js';
-import { Form,FormGroup,Row,Col,Label, Input, Badge, ListGroupItem, ListGroup } from 'reactstrap';
-import Loading from './LoadingComponent.js';
-import {Link} from 'react-router-dom';
-
 
 class Home extends Component {
 
@@ -27,10 +22,7 @@ render(){
             </div>
             <div className="row darkbg">
             </div>
-            <div className="row darkbg justify-content-center">
-
-
-           
+            <div className="row darkbg justify-content-center">    
 
                 
 
@@ -46,6 +38,5 @@ render(){
 }
 
 }
-
 
 export default Home;
