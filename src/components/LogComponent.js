@@ -31,7 +31,7 @@ function RenderIssue ({issue,i}) {
             </Link>
             </td>
             <td>
-            {issue.student.studentID}
+            {issue.student.roll}
             </td>
             <td>
             {issue.book==null ? "N/A":<Link to={`/books/${issue.book._id}`}>
@@ -132,7 +132,7 @@ render(){
            <tr>
             <th>S.No.</th>
             <th>Name of Student</th>
-            <th>Student ID</th>
+            <th>Roll No.</th>
             <th>Name of Book</th>
             <th>ISBN number</th>
             <th>Issue Date</th>

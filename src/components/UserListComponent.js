@@ -15,7 +15,7 @@ function RenderUser ({user,i}) {
             </Link>
             </td>
             <td>
-            {user.studentID}
+            {user.roll}
             </td>
             <td>
             {user.username}
@@ -96,7 +96,7 @@ render(){
            <tr>
             <th>S.No.</th>
             <th>Name of {this.props.users[0].admin?' admin': ' student'}</th>
-            <th>{this.props.users[0].admin?' Admin Id': 'Student ID'}</th>
+            <th>{this.props.users[0].admin?' Admin Id': ' Roll No.'}</th>
             <th>Username</th>
             <th>Email</th>
             </tr>

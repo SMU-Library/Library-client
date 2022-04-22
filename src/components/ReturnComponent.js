@@ -3,9 +3,9 @@ import { Table,Button } from 'reactstrap';
 import {Link} from 'react-router-dom';
 import Loading from './LoadingComponent.js';
 
-const fineRate=2;
+const fineRate=1;
 let totalFine=0;
-const allowedDays=14;
+const allowedDays=30;
 function RenderIssue ({issue,i,returnBook}) {
     const dates=[];
     const today= new Date();
@@ -18,7 +18,7 @@ function RenderIssue ({issue,i,returnBook}) {
     let fine=0;
       if(((returnDate.getTime()-issueDate.getTime())/(1000 * 60 * 60 * 24))>allowedDays)
       {
-        fine=Math.floor((returnDate.getTime()-issueDate.getTime()+allowedDays)/(1000 * 60 * 60 * 24))*fineRate;
+        fine=Math.floor((returnDate.getTime()-issueDate.getTime())/(1000 * 60 * 60 * 24))*fineRate;
       }
    totalFine+=fine;
     return (
@@ -32,7 +32,7 @@ function RenderIssue ({issue,i,returnBook}) {
             </Link>
             </td>
             <td>
-            {issue.student.studentID}
+            {issue.student.roll}
             </td>
             <td>
                 {issue.book==null ? "N/A":<Link to={`/books/${issue.book._id}`}>
@@ -134,12 +134,12 @@ render(){
            <tr>
             <th>S.No.</th>
             <th>Name of Student</th>
-            <th>Student ID</th>
+            <th>Roll No.</th>
             <th>Name of Book</th>
             <th>ISBN number</th>
             <th>Issue Date</th>
             <th>Return Deadline</th>
-            <th>Fine (in TND.)</th>
+            <th>Fine (in Rs.)</th>
             <th>Return book</th> 
            </tr>
         </thead>
@@ -148,7 +148,7 @@ render(){
         </tbody>
         </Table>
             <br/>
-            <h6> Total Fine due (if all pending books are returned today) : TND. {totalFine} </h6>
+            <h6> Total Fine due (if all pending books are returned today) : Rs. {totalFine} </h6>
             <br/>
             </div>
             </div>
