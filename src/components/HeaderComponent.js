@@ -81,16 +81,18 @@ class Header extends Component{
     render(){
         return (
             <React.Fragment>
-                 <Navbar color="white" dark expand="xl" fixed="top">
+                 <Navbar color="dark" dark expand="xl" fixed="top">
                     <div className="container">
                      <NavbarToggler onClick={this.toggleNav}></NavbarToggler>
                      <NavbarBrand className="mr-auto text-primary" href="/home">
-                     SMU Library
+                     Central Library
                      </NavbarBrand>
                      <Collapse isOpen={this.state.isNavOpen} navbar>
                      <Nav navbar>
                         <NavItem className="ml-2" onClick={this.toggleNav}>
-                           
+                            <NavLink className="nav-link text-primary" to="/home">
+                               <span className="fa fa-home fa-lg"/> Home
+                           </NavLink>
                         </NavItem>
                         {this.props.auth.userinfo&&this.props.auth.userinfo.admin?(
                             <NavItem className="">
@@ -156,11 +158,11 @@ class Header extends Component{
                                    <span className="fa fa-list-ul"/> Return Book
                                 </NavLink>
                                 </NavItem>
-                                {/* <NavItem onClick={this.toggleNav} className="ml-2"> */}
-                                {/* <NavLink className="nav-link text-primary" to="/stats"> */}
-                                {/*    <span className="fa fa-info-circle"/> Stats */}
-                                {/* </NavLink> */}
-                                {/* </NavItem> */}
+                                <NavItem onClick={this.toggleNav} className="ml-2">
+                                <NavLink className="nav-link text-primary" to="/stats">
+                                   <span className="fa fa-info-circle"/> Stats
+                                </NavLink>
+                                </NavItem>
                               </React.Fragment>
                             ):
                             (<div/>)
@@ -262,7 +264,7 @@ class Header extends Component{
                             <FormGroup>    
                                  <Label htmlFor="roll">Roll No.</Label>
                                 <Control.text model=".roll" id="roll" name="roll" 
-                            className="form-control" placeholder="Roll" validators={{required,minLength: minLength(3),maxLength:maxLength(12)}} />
+                            className="form-control" placeholder="roll" validators={{required,minLength: minLength(3),maxLength:maxLength(12)}} />
                             <Errors className="text-danger" model=".roll" show="touched" messages={{required: 'Required',
                             minLength: ' Must be greater than 2 characters', maxLength:' Must be 12 characters or less'}}/>
                             </FormGroup>

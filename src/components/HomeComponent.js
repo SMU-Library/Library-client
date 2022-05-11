@@ -13,19 +13,16 @@ class Home extends Component {
       }
 
 render(){
-    
     return(
         <div className="container mt-4 home text-center align-self-center">
         <br/><br/><br/>
             <div className="row mt-3 darkbg text-center justify-content-center">
-            <h1 align="center"> Welcome to SMU Library</h1>
+            <h1 align="center"> Welcome to the Central Library</h1>
             </div>
             <div className="row darkbg">
+
             </div>
-            <div className="row darkbg justify-content-center">    
-
-                
-
+            <div className="row darkbg justify-content-center">
             <br/>
             <br/>
                 </div>
@@ -33,8 +30,6 @@ render(){
                 <br/><br/><br/>
             </div>
         );
-
-        
 }
 
 }
